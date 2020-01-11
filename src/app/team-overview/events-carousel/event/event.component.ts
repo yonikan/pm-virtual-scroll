@@ -32,30 +32,22 @@ export class EventComponent implements OnInit {
   constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
-    // console.log(this.eventData);
     this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
 
     // offset times reset
-    let offset = 2;
+    let offset = 0;
     if (this.eventData.offset) {
       offset = this.eventData.offset;
     }
 
-    // // offset testing
-    if (!this.eventData.isValidated) {
-      console.log('this.eventData.offset: ', this.eventData.offset);
-      let beforeTimeHoursFormatted = moment(this.eventData.startTime).utc();
-      console.log('beforeTimeHoursFormatted: ', beforeTimeHoursFormatted.format('HH:mm'));
-      let afterTimeHoursFormatted = moment(this.eventData.startTime).utc().utcOffset(offset);
-      console.log('afterTimeHoursFormatted: ', afterTimeHoursFormatted.format('HH:mm'));
-    }
-
-    // this.eventData.startTime = moment(this.eventData.startTime).utc().utcOffset(offset);
-    // this.eventData.endTime = moment(this.eventData.endTime).utc().utcOffset(offset);
-    // this.eventData.trimStartTime = moment(this.eventData.trimStartTime).utc().utcOffset(offset);
-    // this.eventData.trimEndTime = moment(this.eventData.trimEndTime).utc().utcOffset(offset);
-    // this.eventData.phaseMinStartTime = moment(this.eventData.phaseMinStartTime).utc().utcOffset(offset);
-    // this.eventData.phaseMaxEndTime = moment(this.eventData.phaseMaxEndTime).utc().utcOffset(offset);
+    // // // offset testing
+    // if (!this.eventData.isValidated) {
+    //   console.log('this.eventData.offset: ', this.eventData.offset);
+    //   let beforeTimeHoursFormatted = moment(this.eventData.startTime).utc();
+    //   console.log('beforeTimeHoursFormatted: ', beforeTimeHoursFormatted.format('HH:mm'));
+    //   let afterTimeHoursFormatted = moment(this.eventData.startTime).utc().utcOffset(offset);
+    //   console.log('afterTimeHoursFormatted: ', afterTimeHoursFormatted.format('HH:mm'));
+    // }
 
 
 
