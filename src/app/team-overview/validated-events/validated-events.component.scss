@@ -5,8 +5,9 @@
         // padding: 0 20px;
         padding-top: 40px;
         display: none;
-        width: 90%;
-        margin: 0 auto;
+        // width: 90%;
+        // margin: 0 auto;
+        height: 500px;
 
         @media (max-width: $media-query-sm) {
             display: block;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 import { TEAM_EVENTS_VALIDATED_DATA } from 'server/data/team-events-validated.data';
 import { EventsCarouselModalComponent } from '../events-carousel/events-carousel-modal/events-carousel-modal.component';
@@ -23,7 +23,11 @@ export class ValidatedEventsComponent implements OnInit {
   teamEvents;
   isTeamEventsLoading;
   index = 0;
-  
+
+  isLoading = true;
+  testObs: Observable<any>;
+  list; 
+
   constructor(
     private dialog: MatDialog,
     private authService: AuthService,
@@ -35,6 +39,8 @@ export class ValidatedEventsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.list = '1'.repeat(100000).split('').map((_, i) => i); 
+
     // of(TEAM_EVENTS_VALIDATED_DATA)
 
     const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
@@ -46,11 +52,20 @@ export class ValidatedEventsComponent implements OnInit {
       .subscribe((result: any) => {
         // console.log('result: ', result);
         this.teamEvents = result; // only validated team-events
+        this.isLoading = false;
+        // this.testObservable(result); // test
         this.isTeamEventsLoading = false;
       }, (err) => {
         console.log('err: ', err);
       });
   }
+
+  // testObservable(teamEvents): Observable<any> {
+  //   // let payload = {
+
+  //   // }
+  //   // return this.testObs;
+  // }
 
   onEditSession(teamEvent) {
     console.log('teamEvent: ', teamEvent);

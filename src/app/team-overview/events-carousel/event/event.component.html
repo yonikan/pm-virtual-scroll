@@ -99,11 +99,11 @@
                 </button>
             </div>
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
-                <button class="action-btn" mat-button (click)="downloadPdfReport('teamReport')">
+                <button class="action-btn" mat-raised-button (click)="downloadPdfReport('teamReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
                     <span>Team Report</span>
                 </button>
-                <button class="action-btn" mat-button (click)="downloadPdfReport('individualReport')">
+                <button class="action-btn" mat-raised-button (click)="downloadPdfReport('individualReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
                     <span>Individual Report</span>
                 </button>

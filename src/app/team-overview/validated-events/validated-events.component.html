@@ -1,10 +1,48 @@
 <div class="validated-events-container">
-    <app-event *ngFor="let teamEvent of teamEvents"
-        [@fadeInOut]
-        [eventIndex]="index" 
-        (editSessionEmitter)="onEditSession($event)"
-        (deleteSessionEmitter)="onDeleteSession($event)"
-        (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
-        [eventData]="teamEvent">
-    </app-event>
+
+    <!-- <cdk-virtual-scroll-viewport itemSize="5" style="height: 200px;">
+        <div *cdkVirtualFor="let item of list">{{item}}</div>
+      </cdk-virtual-scroll-viewport> -->
+
+    <!-- <cdk-virtual-scroll-viewport [itemSize]="20">
+        <app-event *cdkVirtualFor="let teamEvent of testObs | async"
+            [@fadeInOut]
+            [eventIndex]="index" 
+            (editSessionEmitter)="onEditSession($event)"
+            (deleteSessionEmitter)="onDeleteSession($event)"
+            (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
+            [eventData]="teamEvent">
+        </app-event>
+    </cdk-virtual-scroll-viewport> -->
+
+    <div *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading">
+      <cdk-virtual-scroll-viewport itemSize="260" style="height: 90vh; width: 90vw; margin: 0 auto;">
+        <!-- <div *cdkVirtualFor="let teamEvent of teamEvents">
+            TESTTTT
+        </div> -->
+        <app-event *cdkVirtualFor="let teamEvent of teamEvents"
+            [@fadeInOut]
+            [eventIndex]="index" 
+            (editSessionEmitter)="onEditSession($event)"
+            (deleteSessionEmitter)="onDeleteSession($event)"
+            (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
+            [eventData]="teamEvent">
+        </app-event>
+      </cdk-virtual-scroll-viewport>
+
+
+
+
+        <!-- <app-event *ngFor="let teamEvent of teamEvents"
+            [@fadeInOut]
+            [eventIndex]="index" 
+            (editSessionEmitter)="onEditSession($event)"
+            (deleteSessionEmitter)="onDeleteSession($event)"
+            (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
+            [eventData]="teamEvent">
+        </app-event> -->
+    </div>
 </div>
